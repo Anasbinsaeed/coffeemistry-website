@@ -131,7 +131,7 @@ export default function Hero() {
         >
           <div className="relative">
             <img
-              src="coffeemistry-logo-white.png"
+              src="/coffeemistry-logo-white.png"
               alt="Coffeemistry"
               className="h-20 md:h-24 w-auto mb-4 relative z-10"
             />

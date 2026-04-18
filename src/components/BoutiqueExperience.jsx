@@ -52,7 +52,7 @@ export default function BoutiqueExperience() {
         >
           <div className="aspect-[4/5] bg-roast/80 backdrop-blur-sm border border-gold/10 flex items-center justify-center overflow-hidden group-hover:border-gold/25 transition-all duration-500">
             <img
-              src="atmosphere.jpg"
+              src="/atmosphere.jpg"
               alt="Café Atmosphere"
               className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
             />

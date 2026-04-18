@@ -29,7 +29,7 @@ export default function Footer() {
             className="inline-flex flex-col items-center hover:opacity-80 transition-opacity"
           >
             <img
-              src="coffeemistry-logo-white.png"
+              src="/coffeemistry-logo-white.png"
               alt="Coffeemistry"
               className="h-10 w-auto mb-2"
             />

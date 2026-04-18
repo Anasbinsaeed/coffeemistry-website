@@ -115,7 +115,7 @@ export default function BrandStory() {
         >
           <div className="aspect-[3/4] bg-roast/80 backdrop-blur-sm border border-gold/10 flex items-center justify-center overflow-hidden group-hover:border-gold/25 transition-all duration-500">
             <img
-              src="photography.jpg"
+              src="/photography.jpg"
               alt="Coffee Photography"
               className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
             />
