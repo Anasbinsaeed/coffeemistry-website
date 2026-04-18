@@ -7,5 +7,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/coffeemistry/', // Replace 'coffeemistry' with your actual repo name
+  base: '/coffeemistry-website/',
 })
