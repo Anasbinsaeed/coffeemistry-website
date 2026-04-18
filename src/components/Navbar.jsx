@@ -53,7 +53,7 @@ export default function Navbar() {
             className="flex items-center hover:opacity-80 transition-opacity relative"
           >
             <img
-              src="coffeemistry-logo-white.png"
+              src="/coffeemistry-logo-white.png"
               alt="Coffeemistry"
               className="h-8 md:h-10 w-auto"
             />
@@ -128,7 +128,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
             >
               <img
-                src="coffeemistry-logo-white.png"
+                src="/coffeemistry-logo-white.png"
                 alt="Coffeemistry"
                 className="h-12 w-auto mb-2"
               />
