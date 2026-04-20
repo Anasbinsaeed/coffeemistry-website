@@ -20,6 +20,8 @@ const leftContainer = {
   visible: { transition: { staggerChildren: 0.12 } },
 }
 
+const photographyUrl = `${import.meta.env.BASE_URL}photography.jpg`
+
 export default function BrandStory() {
   return (
     <section id="story" className="bg-espresso py-24 md:py-32 px-6 md:px-10 relative overflow-hidden">
@@ -115,7 +117,7 @@ export default function BrandStory() {
         >
           <div className="aspect-[3/4] bg-roast/80 backdrop-blur-sm border border-gold/10 flex items-center justify-center overflow-hidden group-hover:border-gold/25 transition-all duration-500">
             <img
-              src="/photography.jpg"
+              src={photographyUrl}
               alt="Coffee Photography"
               className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
             />

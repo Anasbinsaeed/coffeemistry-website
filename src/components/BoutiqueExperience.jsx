@@ -23,6 +23,8 @@ const slideRight = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } },
 }
 
+const atmosphereUrl = `${import.meta.env.BASE_URL}atmosphere.jpg`
+
 export default function BoutiqueExperience() {
   const parallaxMedium = useParallax(0.5)
 
@@ -52,7 +54,7 @@ export default function BoutiqueExperience() {
         >
           <div className="aspect-[4/5] bg-roast/80 backdrop-blur-sm border border-gold/10 flex items-center justify-center overflow-hidden group-hover:border-gold/25 transition-all duration-500">
             <img
-              src="/atmosphere.jpg"
+              src={atmosphereUrl}
               alt="Café Atmosphere"
               className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
             />

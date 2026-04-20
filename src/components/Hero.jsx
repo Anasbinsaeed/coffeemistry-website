@@ -17,6 +17,8 @@ const logoFade = {
   visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: 'easeOut' } },
 }
 
+const logoUrl = `${import.meta.env.BASE_URL}coffeemistry-logo-white.png`
+
 export default function Hero() {
   const parallaxSlow = useParallax(0.3)
   const parallaxMedium = useParallax(0.5)
@@ -119,43 +121,31 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-radial from-gold/5 via-transparent to-transparent opacity-40" />
 
       <motion.div
-        className="text-center max-w-4xl mx-auto relative z-10"
+        className="text-center max-w-4xl mx-auto relative z-10 py-8"
         variants={container}
         initial="hidden"
         animate="visible"
       >
-        {/* Logo + Chemical Formula */}
+        {/* Logo */}
         <motion.div
           variants={logoFade}
-          className="flex flex-col items-center mb-10 md:mb-12"
+          className="flex flex-col items-center mb-6 md:mb-8"
         >
           <div className="relative">
             <img
-              src="/coffeemistry-logo-white.png"
+              src={logoUrl}
               alt="Coffeemistry"
-              className="h-20 md:h-24 w-auto mb-4 relative z-10"
+              className="h-16 md:h-20 w-auto mb-3 relative z-10"
             />
             {/* Molecular glow */}
             <div className="absolute inset-0 blur-3xl bg-gold/10 scale-150" />
           </div>
 
-          {/* Chemical formula badge */}
-          <div className="element-card px-4 py-2 mb-6">
-            <div className="flex items-center gap-3">
-              <div className="text-center">
-                <div className="chemical-formula text-[10px] text-gold/50">194.19</div>
-                <div className="text-gold text-lg font-bold" style={{ fontFamily: 'var(--font-display)' }}>C</div>
-                <div className="chemical-formula text-[9px] text-gold/40">Caffeine</div>
-              </div>
-              <div className="chemical-formula text-gold/60 text-sm">C₈H₁₀N₄O₂</div>
-            </div>
-          </div>
-
           <p
             style={{ fontFamily: 'var(--font-body)' }}
-            className="font-normal uppercase tracking-[0.25em] text-xs text-gold/90"
+            className="font-normal uppercase tracking-[0.2em] text-[10px] text-gold/80"
           >
-            Islamabad · F-8 · Specialty Coffee
+            F-8, Islamabad
           </p>
         </motion.div>
 
@@ -163,14 +153,14 @@ export default function Hero() {
         <motion.h1
           variants={fadeUp}
           style={{ fontFamily: 'var(--font-display)' }}
-          className="font-normal text-5xl sm:text-6xl md:text-8xl text-cream leading-none tracking-wide"
+          className="font-normal text-4xl sm:text-5xl md:text-7xl text-cream leading-tight tracking-wide"
         >
           Coffee Is Chemistry.
         </motion.h1>
         <motion.h1
           variants={fadeUp}
           style={{ fontFamily: 'var(--font-display)' }}
-          className="font-normal italic text-5xl sm:text-6xl md:text-8xl text-gold leading-none tracking-wide mt-1"
+          className="font-normal italic text-4xl sm:text-5xl md:text-7xl text-gold leading-tight tracking-wide mt-1"
         >
           Ours Is Exact.
         </motion.h1>
@@ -179,49 +169,37 @@ export default function Hero() {
         <motion.p
           variants={fadeUp}
           style={{ fontFamily: 'var(--font-body)' }}
-          className="font-light text-base md:text-lg text-text-muted max-w-md mx-auto mt-10 md:mt-12 leading-relaxed"
+          className="font-light text-sm md:text-base text-text-muted max-w-lg mx-auto mt-6 md:mt-8 leading-relaxed px-4"
         >
-          Islamabad's only specialty café where you choose your origin, taste
-          your tasting notes, and experience the science of extraction —
-          perfectly dialed in, every time.
+          Specialty café where you choose your origin and experience the science of extraction.
         </motion.p>
 
-        {/* Tagline - 4 lines, 1 word each */}
+        {/* Tagline */}
         <motion.div
           variants={fadeUp}
-          className="flex items-center justify-center gap-6 mt-8 md:mt-10"
+          className="mt-6 md:mt-8"
         >
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-gold/30 rounded-full" />
-            <span className="w-8 h-px bg-gold/20" />
-          </div>
-
           <div
             style={{ fontFamily: 'var(--font-display)' }}
-            className="text-gold/80 text-lg md:text-xl italic leading-tight text-center"
+            className="text-gold/70 text-base md:text-lg italic"
           >
-            <div>let · coffee · connect · us</div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <span className="w-8 h-px bg-gold/20" />
-            <span className="w-2 h-2 bg-gold/30 rounded-full" />
+            let · coffee · connect · us
           </div>
         </motion.div>
 
         {/* CTAs */}
         <motion.div
           variants={fadeUp}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8 md:mt-10 px-4"
         >
           <motion.a
             href="#menu"
             style={{ fontFamily: 'var(--font-body)' }}
-            className="text-sm uppercase tracking-widest bg-gold text-espresso px-8 py-4 hover:bg-[#d4b67a] transition-all duration-300 inline-block shadow-lg shadow-gold/20 relative"
+            className="w-full sm:w-auto text-xs uppercase tracking-widest bg-gold text-espresso px-6 py-3 hover:bg-[#d4b67a] transition-all duration-300 inline-block shadow-lg shadow-gold/20 relative"
             whileHover={{ scale: 1.03, boxShadow: '0 20px 40px rgba(201, 169, 110, 0.3)' }}
             whileTap={{ scale: 0.97 }}
           >
-            Explore the Menu
+            Explore Menu
             {/* Corner nodes */}
             <span className="absolute top-0 left-0 w-1.5 h-1.5 bg-espresso rounded-full" />
             <span className="absolute top-0 right-0 w-1.5 h-1.5 bg-espresso rounded-full" />
@@ -231,15 +209,12 @@ export default function Hero() {
           <motion.a
             href="#visit"
             style={{ fontFamily: 'var(--font-body)' }}
-            className="text-sm uppercase tracking-widest text-gold border border-gold/40 px-8 py-4 hover:bg-gold hover:text-espresso transition-all duration-300 inline-block relative overflow-hidden group backdrop-blur-sm"
+            className="w-full sm:w-auto text-xs uppercase tracking-widest text-gold border border-gold/40 px-6 py-3 hover:bg-gold hover:text-espresso transition-all duration-300 inline-block relative overflow-hidden group backdrop-blur-sm"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
-            <span className="relative z-10">Find Us in F-8</span>
+            <span className="relative z-10">Find Us</span>
             <span className="absolute inset-0 bg-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-            {/* Molecular bond decoration */}
-            <span className="absolute top-1/2 left-2 w-3 h-px bg-gold/30 -translate-y-1/2" />
-            <span className="absolute top-1/2 right-2 w-3 h-px bg-gold/30 -translate-y-1/2" />
           </motion.a>
         </motion.div>
       </motion.div>

@@ -8,6 +8,8 @@ const links = [
   { label: 'Our Beans', href: '#beans' },
 ]
 
+const logoUrl = `${import.meta.env.BASE_URL}coffeemistry-logo-white.png`
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -33,38 +35,36 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
       >
-        {/* Chemical bond lines decoration */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-          <svg className="absolute top-0 left-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            {/* Molecular structure lines */}
-            <line x1="0" y1="50%" x2="15%" y2="50%" stroke="rgba(201, 169, 110, 0.2)" strokeWidth="1" />
-            <circle cx="15%" cy="50%" r="3" fill="rgba(201, 169, 110, 0.3)" />
-            <line x1="15%" y1="50%" x2="25%" y2="50%" stroke="rgba(201, 169, 110, 0.2)" strokeWidth="1" />
 
-            <line x1="75%" y1="50%" x2="85%" y2="50%" stroke="rgba(201, 169, 110, 0.2)" strokeWidth="1" />
-            <circle cx="85%" cy="50%" r="3" fill="rgba(201, 169, 110, 0.3)" />
-            <line x1="85%" y1="50%" x2="100%" y2="50%" stroke="rgba(201, 169, 110, 0.2)" strokeWidth="1" />
-          </svg>
-        </div>
+        <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between md:justify-between h-20 relative z-10">
+          {/* Mobile menu button - left side */}
+          <button
+            onClick={() => setMobileOpen(true)}
+            className="md:hidden text-cream hover:text-gold transition-colors"
+            aria-label="Open menu"
+          >
+            <MenuIcon size={24} />
+          </button>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-20 relative z-10">
+          {/* Logo - centered on mobile, left on desktop */}
           <a
             href="#"
-            className="flex items-center hover:opacity-80 transition-opacity relative"
+            className="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0 flex items-center hover:opacity-80 transition-opacity"
           >
             <img
-              src="/coffeemistry-logo-white.png"
+              src={logoUrl}
               alt="Coffeemistry"
               className="h-8 md:h-10 w-auto"
             />
-            {/* Chemical formula subtitle */}
-            <span className="chemical-formula absolute -bottom-3 left-0 text-[8px] opacity-50">
+            {/* Chemical formula subtitle - hidden on mobile */}
+            <span className="chemical-formula absolute -bottom-3 left-0 text-[8px] opacity-50 hidden md:block">
               C₈H₁₀N₄O₂
             </span>
           </a>
 
+          {/* Desktop navigation */}
           <div className="hidden md:flex items-center gap-10">
-            {links.map((link, i) => (
+            {links.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
@@ -92,13 +92,8 @@ export default function Navbar() {
             </a>
           </div>
 
-          <button
-            onClick={() => setMobileOpen(true)}
-            className="md:hidden text-cream hover:text-gold transition-colors"
-            aria-label="Open menu"
-          >
-            <MenuIcon size={24} />
-          </button>
+          {/* Spacer for mobile to balance the layout */}
+          <div className="md:hidden w-6" />
         </div>
       </motion.nav>
 
@@ -128,7 +123,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
             >
               <img
-                src="/coffeemistry-logo-white.png"
+                src={logoUrl}
                 alt="Coffeemistry"
                 className="h-12 w-auto mb-2"
               />

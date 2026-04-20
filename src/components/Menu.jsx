@@ -1,34 +1,53 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Coffee } from 'lucide-react'
 import { useParallax } from '../hooks/useParallax'
 
+// Import menu item images
+import espressoImg from '../assets/menu items/espresso.webp'
+import piccoloImg from '../assets/menu items/piccolo.webp'
+import cortadoImg from '../assets/menu items/cortado.jpg'
+import cappuccinoImg from '../assets/menu items/cappiccino.webp'
+import latteImg from '../assets/menu items/latte.jpg'
+import flatWhiteImg from '../assets/menu items/flat white.avif'
+import spanishLatteImg from '../assets/menu items/spanish latte.jpg'
+import mochaImg from '../assets/menu items/mocha.jpg'
+import icedLatteImg from '../assets/menu items/iced latte.jpg'
+import icedSpanishLatteImg from '../assets/menu items/iced spanish latte.webp'
+import icedMochaImg from '../assets/menu items/iced mocha.jpg'
+import classicImg from '../assets/menu items/classic.jpg'
+import signatureImg from '../assets/menu items/signature.avif'
+import hotChocolateImg from '../assets/menu items/hot chocolate.jpg'
+import icedChocolateImg from '../assets/menu items/iced chocolate.webp'
+import cascaraImg from '../assets/menu items/cascara.jpg'
+
 const espressoBased = [
-  { name: 'Espresso', size: '1.5 oz', desc: 'Liquid Gold', price: '450', formula: 'C₈H₁₀N₄O₂' },
-  { name: 'Piccolo', size: '3 oz', desc: 'A baby Latte', price: '470', formula: 'C₁₂H₂₂O₁₁' },
-  { name: 'Cortado', size: '4 oz', desc: 'A more concentrated latte', price: '580', formula: 'Ca²⁺' },
-  { name: 'Cappuccino', size: '8 oz', desc: 'The OG milk drink', price: '620', formula: 'H₂O + C₈' },
-  { name: 'Latte', size: '8 oz', desc: 'Creamy milky goodness', price: '620', formula: 'C₆H₁₂O₆' },
-  { name: 'Flat White', size: '8 oz', desc: 'The greatest kiwi gift to coffee', price: '620', formula: 'C₇H₈N₄O₂' },
-  { name: 'Spanish Latte', size: '8 oz', desc: 'A sweeter, creamier latte', price: '680', formula: 'C₁₂H₂₂O₁₁' },
-  { name: 'Mocha', size: '8 oz', desc: 'A delicious blend of chocolate and coffee', price: '680', formula: 'C₇H₈N₄O₂' },
-  { name: 'Iced Latte', size: '12 oz', desc: 'The perfect summer coffee', price: '680', formula: 'H₂O(s)' },
-  { name: 'Iced Spanish Latte', size: '12 oz', desc: 'An iced, irresistible treat', price: '750', formula: 'H₂O(l)' },
-  { name: 'Iced Mocha', size: '12 oz', desc: 'Iced chocolaty heaven', price: '750', formula: 'C₆H₈O₇' },
+  { name: 'Espresso', size: '1.5 oz', desc: 'Liquid Gold', price: '450', formula: 'C₈H₁₀N₄O₂', image: espressoImg },
+  { name: 'Piccolo', size: '3 oz', desc: 'A baby Latte', price: '470', formula: 'C₁₂H₂₂O₁₁', image: piccoloImg },
+  { name: 'Cortado', size: '4 oz', desc: 'A more concentrated latte', price: '580', formula: 'Ca²⁺', image: cortadoImg },
+  { name: 'Cappuccino', size: '8 oz', desc: 'The OG milk drink', price: '620', formula: 'H₂O + C₈', image: cappuccinoImg },
+  { name: 'Latte', size: '8 oz', desc: 'Creamy milky goodness', price: '620', formula: 'C₆H₁₂O₆', image: latteImg },
+  { name: 'Flat White', size: '8 oz', desc: 'The greatest kiwi gift to coffee', price: '620', formula: 'C₇H₈N₄O₂', image: flatWhiteImg },
+  { name: 'Spanish Latte', size: '8 oz', desc: 'A sweeter, creamier latte', price: '680', formula: 'C₁₂H₂₂O₁₁', image: spanishLatteImg },
+  { name: 'Mocha', size: '8 oz', desc: 'A delicious blend of chocolate and coffee', price: '680', formula: 'C₇H₈N₄O₂', image: mochaImg },
+  { name: 'Iced Latte', size: '12 oz', desc: 'The perfect summer coffee', price: '680', formula: 'H₂O(s)', image: icedLatteImg },
+  { name: 'Iced Spanish Latte', size: '12 oz', desc: 'An iced, irresistible treat', price: '750', formula: 'H₂O(l)', image: icedSpanishLatteImg },
+  { name: 'Iced Mocha', size: '12 oz', desc: 'Iced chocolaty heaven', price: '750', formula: 'C₆H₈O₇', image: icedMochaImg },
 ]
 
 const slowBar = [
-  { name: 'Classic', method: 'V60, Aeropress, Chemex', desc: 'A blend for those who prefer a lighter yet floral coffee', price: '680', formula: 'C₈H₁₀N₄O₂' },
-  { name: 'Signature', method: 'V60, Aeropress, Chemex', desc: 'A Single Origin coffee that shines in Pourover methods', price: '750', formula: 'C₆H₈O₇' },
+  { name: 'Classic', method: 'V60, Aeropress, Chemex', desc: 'A blend for those who prefer a lighter yet floral coffee', price: '680', formula: 'C₈H₁₀N₄O₂', image: classicImg },
+  { name: 'Signature', method: 'V60, Aeropress, Chemex', desc: 'A Single Origin coffee that shines in Pourover methods', price: '750', formula: 'C₆H₈O₇', image: signatureImg },
 ]
 
 const notCoffee = [
-  { name: 'Hot Chocolate', size: '8 oz', desc: 'Creamy rich concoction of the finest chocolate and milk', price: '580', formula: 'C₇H₈N₄O₂' },
-  { name: 'Iced Chocolate', size: '12 oz', desc: 'Iced chocolaty heaven', price: '620', formula: 'C₁₂H₂₂O₁₁' },
-  { name: 'Cascara', size: '12 oz', desc: 'A refreshing tea made from the coffee cherry', price: '790', formula: 'C₆H₁₂O₆' },
+  { name: 'Hot Chocolate', size: '8 oz', desc: 'Creamy rich concoction of the finest chocolate and milk', price: '580', formula: 'C₇H₈N₄O₂', image: hotChocolateImg },
+  { name: 'Iced Chocolate', size: '12 oz', desc: 'Iced chocolaty heaven', price: '620', formula: 'C₁₂H₂₂O₁₁', image: icedChocolateImg },
+  { name: 'Cascara', size: '12 oz', desc: 'A refreshing tea made from the coffee cherry', price: '790', formula: 'C₆H₁₂O₆', image: cascaraImg },
 ]
 
 const extras = [
-  { name: 'Extra Shot', desc: 'Add an extra shot of espresso to any drink', price: '400', formula: 'C₈H₁₀N₄O₂' },
+  { name: 'Extra Shot', desc: 'Add an extra shot of espresso to any drink', price: '400', formula: 'C₈H₁₀N₄O₂', image: null },
 ]
 
 const grid = {
@@ -139,60 +158,87 @@ export default function Menu() {
               <motion.div
                 key={item.name + index}
                 variants={card}
-                whileHover={{ y: -6 }}
-                className="element-card p-6 flex flex-col transition-all duration-300 hover:border-gold/30 hover:shadow-lg hover:shadow-gold/5 group relative overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="bg-espresso/40 backdrop-blur-sm border border-gold/10 hover:border-gold/30 hover:shadow-xl hover:shadow-gold/10 transition-all duration-300 group relative overflow-hidden"
               >
                 {/* Hexagonal pattern overlay */}
                 <div className="absolute inset-0 hex-pattern opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <div className="relative z-10">
-                  {/* Header with size/method and formula */}
-                  <div className="flex items-start justify-between mb-3">
-                    <span
-                      style={{ fontFamily: 'var(--font-body)' }}
-                      className="text-[10px] uppercase tracking-wider text-gold/50"
-                    >
-                      {item.size || item.method || '—'}
-                    </span>
-                    <span className="chemical-formula text-[9px] text-gold/40">
-                      {item.formula}
-                    </span>
+                {/* Image with fixed overlay */}
+                <div className="relative w-full h-56 overflow-hidden">
+                  {/* Image layer */}
+                  <div className="absolute inset-0">
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-roast to-espresso">
+                        <Coffee className="text-gold/30" size={64} strokeWidth={1} />
+                      </div>
+                    )}
                   </div>
 
-                  <h3
-                    style={{ fontFamily: 'var(--font-display)' }}
-                    className="font-semibold text-2xl text-cream mb-2 group-hover:text-gold/95 transition-colors"
-                  >
-                    {item.name}
-                  </h3>
+                  {/* Fixed gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/60 to-transparent z-10" />
 
+                  {/* Content overlay on image */}
+                  <div className="absolute inset-0 z-20 p-5 flex flex-col justify-end">
+                    <div className="flex items-end justify-between">
+                      <div>
+                        <h3
+                          style={{ fontFamily: 'var(--font-display)' }}
+                          className="font-semibold text-2xl text-cream mb-1 group-hover:text-gold/95 transition-colors"
+                        >
+                          {item.name}
+                        </h3>
+                        <span
+                          style={{ fontFamily: 'var(--font-body)' }}
+                          className="text-[10px] uppercase tracking-wider text-gold/60"
+                        >
+                          {item.size || item.method || '—'}
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <div
+                          style={{ fontFamily: 'var(--font-display)' }}
+                          className="text-2xl text-gold font-semibold"
+                        >
+                          {item.price}
+                        </div>
+                        <span
+                          style={{ fontFamily: 'var(--font-body)' }}
+                          className="text-[9px] text-gold/50 uppercase tracking-wider"
+                        >
+                          PKR
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Description section */}
+                <div className="relative z-10 p-5 bg-espresso/60 backdrop-blur-sm">
                   <p
                     style={{ fontFamily: 'var(--font-body)' }}
-                    className="font-light text-sm text-text-muted italic leading-relaxed flex-1 mb-4"
+                    className="font-light text-sm text-text-muted italic leading-relaxed mb-3"
                   >
                     {item.desc}
                   </p>
 
-                  {/* Price */}
+                  {/* Chemical formula badge */}
                   <div className="flex items-center justify-between">
-                    <span
-                      style={{ fontFamily: 'var(--font-display)' }}
-                      className="text-xl text-gold font-semibold"
-                    >
-                      {item.price}
+                    <span className="chemical-formula text-[10px] text-gold/40">
+                      {item.formula}
                     </span>
-                    <span
-                      style={{ fontFamily: 'var(--font-body)' }}
-                      className="text-xs text-gold/60 uppercase tracking-wider"
-                    >
-                      PKR
-                    </span>
-                  </div>
-
-                  {/* Molecular bond divider */}
-                  <div className="w-full h-px bg-gradient-to-r from-gold/0 via-gold/10 to-gold/0 mt-4 group-hover:via-gold/20 transition-colors relative">
-                    <span className="absolute left-1/4 top-1/2 w-1.5 h-1.5 bg-gold/20 rounded-full -translate-y-1/2" />
-                    <span className="absolute right-1/4 top-1/2 w-1.5 h-1.5 bg-gold/20 rounded-full -translate-y-1/2" />
+                    <div className="flex gap-1">
+                      <span className="w-1 h-1 bg-gold/20 rounded-full" />
+                      <span className="w-1 h-1 bg-gold/30 rounded-full" />
+                      <span className="w-1 h-1 bg-gold/20 rounded-full" />
+                    </div>
                   </div>
                 </div>
               </motion.div>

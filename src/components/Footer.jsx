@@ -7,6 +7,8 @@ const footerLinks = [
   { label: 'Instagram', href: 'https://instagram.com/coffeemistrypk', external: true },
 ]
 
+const logoUrl = `${import.meta.env.BASE_URL}coffeemistry-logo-white.png`
+
 export default function Footer() {
   return (
     <footer className="bg-coffee-black border-t border-gold/10 py-16 px-6 md:px-10 relative overflow-hidden">
@@ -29,7 +31,7 @@ export default function Footer() {
             className="inline-flex flex-col items-center hover:opacity-80 transition-opacity"
           >
             <img
-              src="/coffeemistry-logo-white.png"
+              src={logoUrl}
               alt="Coffeemistry"
               className="h-10 w-auto mb-2"
             />
